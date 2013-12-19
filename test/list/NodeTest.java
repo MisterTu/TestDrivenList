@@ -53,13 +53,13 @@ public class NodeTest {
 		assertEquals("q,u,e,e,n",list.toString());
 	}
 	
-//	@Test
-//	public void testDeleteFirstNode(){
-//		Node list = new Node("f",new Node("r", new Node("a", new Node("i", new Node("l", new Node("s"))))));
-//		list.delete(0);
-//		
-//		assertEquals("r,a,i,l,s",list.toString());
-//	}
+	@Test
+	public void testDeleteFirstNode(){
+		Node list = new Node("f",new Node("r", new Node("a", new Node("i", new Node("l", new Node("s"))))));
+		list = list.delete(0);
+		
+		assertEquals("r,a,i,l,s",list.toString());
+	}
 	
 	@Test
 	public void testDeleteLastNode(){
@@ -69,18 +69,18 @@ public class NodeTest {
 		assertEquals("f,r,a,i,l",list.toString());
 	}
 	
-//	@Test
-//	public void testReverseList(){
-//		Node list = new Node("r",new Node("a", new Node("i", new Node("l"))));
-//		list = list.reverse();
-//		
-//		assertEquals("l,i,a,r",list.toString());
-//	}
+	@Test
+	public void testReverseList(){
+		Node list = new Node("r",new Node("a", new Node("i", new Node("l"))));
+		list = list.reverse();
+		
+		assertEquals("l,i,a,r",list.toString());
+	}
 	
 	@Test
 	public void testNodeInPos(){
 		Node list = new Node("f",new Node("r", new Node("a", new Node("i", new Node("l", new Node("s"))))));
-		list = list.getNodeInPos(3);
+		list = list.getNodeInPos(4);
 		
 		assertEquals("i",list.toString());
 	}

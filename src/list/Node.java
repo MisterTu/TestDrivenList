@@ -63,9 +63,7 @@ public class Node {
 		return i;
 	}
 	
-	
-	//if position > list-lenght = delete last node
-	public void delete(int position){
+	public Node delete(int position){
 		Node antecessor = this;
 		
 		if(position != 0){
@@ -81,46 +79,51 @@ public class Node {
 			antecessor.next = antecessor.next.next;
 		}
 		else if(position == 0){
-			Node tempo = antecessor;
-			antecessor = antecessor.next;
-			tempo.next = null;
+
+			return antecessor.next;
 		}
 		
-		
+		return this;
 	}
 	
+	
+	//count from 1
 	public Node getNodeInPos(int position){
 		Node antecessor = this;
 		
-		for(int i=0; i<position-1; i++){
-			antecessor = antecessor.next;
-			System.out.println("Position: " + position);
-			System.out.println("i: " + i);
+		for(int i = 0; i < position-1; i++){
+			antecessor = antecessor.getNext();
 		}
+		
+		antecessor.next = null;
 		
 		
 		return antecessor;
 	}
 	
-//	public Node reverse(){
-//		int nextToReverse = getLength();
-//		Node reversedList = getNodeInPos(nextToReverse);
-//		
-//		nextToReverse --;
-//		
-//		for(int i = nextToReverse; i >= 0; i--){
-//			
-//			
-//			
-//			reversedList.append(getNodeInPos(nextToReverse));
-//			
-//			System.out.println("nextToReverse: " + nextToReverse);
-//			
-//		}
-//		
-//		return reversedList;
-//	}
+	public boolean isEmpty(){
+		return this.getLength() == 0;
+	}
 	
-	
+	public Node reverse(){		
+		Node list = this;
+		
+		Node reversedList = list.getLast();
+		list.delete(list.getLength()-1);
+		
+		
+		
+		while(list.getLength() > 1){
+			reversedList.append(list.getLast());
+			list.delete(list.getLength()-1);
+		}
+		
+
+		reversedList.append(list.getLast());
+		
+		
+		
+		return reversedList;
+	}
 
 }
